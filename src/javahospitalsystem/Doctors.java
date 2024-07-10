@@ -235,6 +235,11 @@ public class Doctors extends javax.swing.JFrame {
         jLabel6.setText("PASSWORD");
 
         DocPass.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
+        DocPass.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                DocPassMouseClicked(evt);
+            }
+        });
 
         DocExp.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
 
@@ -365,7 +370,7 @@ public class Doctors extends javax.swing.JFrame {
         try{
            Con = DriverManager.getConnection("jdbc:derby://localhost:1527/HospitalJavaDB", "root", "3687");
            St = Con.createStatement();
-           Rs = St.executeQuery("select * from Root.DOCTORTBL");
+           Rs = St.executeQuery("SELECT DOCID, DOCNAME, DOCPASS, DOCEXP FROM Root.DOCTORTBL");
            DoctorTable.setModel(DbUtils.resultSetToTableModel(Rs));
         } catch (Exception e)
         {
@@ -438,7 +443,7 @@ public class Doctors extends javax.swing.JFrame {
         else {
             try {
                    Con = DriverManager.getConnection("jdbc:derby://localhost:1527/HospitalJavaDB", "root", "3687");
-                   String Query = "UPDATE Root.DOCTORTBL SET DocNAME = '"+DocName.getText()+"', DOCEXP=" + DocExp.getText() + ", DOCPASS='"+DocPass.getText()+"' WHERE DOCID="+DocId.getText();
+                   String Query = "UPDATE Root.DOCTORTBL SET DOCNAME = '"+DocName.getText()+"', DOCEXP=" + DocExp.getText() + ", DOCPASS='"+ DocPass.getText()+"' WHERE DOCID="+DocId.getText();
                    Statement Add = Con.createStatement();
                    Add.executeUpdate(Query);
                    JOptionPane.showMessageDialog(this, "Doctor Updated Successfully");
@@ -455,6 +460,10 @@ public class Doctors extends javax.swing.JFrame {
         new HomeForm().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void DocPassMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DocPassMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_DocPassMouseClicked
 
     /**
      * @param args the command line arguments

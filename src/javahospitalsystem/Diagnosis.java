@@ -97,7 +97,7 @@ public class Diagnosis extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         PatMed = new javax.swing.JTextField();
         jPanel6 = new javax.swing.JPanel();
-        AddBtn = new javax.swing.JButton();
+        DeleteBtn = new javax.swing.JButton();
         jButton12 = new javax.swing.JButton();
         jPanel7 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
@@ -105,6 +105,8 @@ public class Diagnosis extends javax.swing.JFrame {
         DiagnosisTable = new javax.swing.JTable();
         jButton13 = new javax.swing.JButton();
         jPanel8 = new javax.swing.JPanel();
+        ClearBtn = new javax.swing.JButton();
+        AddBtn = new javax.swing.JButton();
         PatId = new javax.swing.JComboBox<>();
         jLabel10 = new javax.swing.JLabel();
         DiagId = new javax.swing.JTextField();
@@ -186,7 +188,7 @@ public class Diagnosis extends javax.swing.JFrame {
         PatSummary.setColumns(20);
         PatSummary.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         PatSummary.setRows(5);
-        PatSummary.setText("============PATIENT SUMMARY============");
+        PatSummary.setText("============PATIENT SUMMARY=============");
         jScrollPane1.setViewportView(PatSummary);
 
         jLabel9.setFont(new java.awt.Font("Century Gothic", 1, 24)); // NOI18N
@@ -194,13 +196,18 @@ public class Diagnosis extends javax.swing.JFrame {
 
         PatMed.setFont(new java.awt.Font("Century Gothic", 3, 18)); // NOI18N
 
-        AddBtn.setBackground(new java.awt.Color(0, 0, 0));
-        AddBtn.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
-        AddBtn.setForeground(new java.awt.Color(255, 255, 255));
-        AddBtn.setText("ADD");
-        AddBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+        DeleteBtn.setBackground(new java.awt.Color(0, 0, 0));
+        DeleteBtn.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        DeleteBtn.setForeground(new java.awt.Color(255, 255, 255));
+        DeleteBtn.setText("DELETE");
+        DeleteBtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                AddBtnMouseClicked(evt);
+                DeleteBtnMouseClicked(evt);
+            }
+        });
+        DeleteBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DeleteBtnActionPerformed(evt);
             }
         });
 
@@ -285,16 +292,40 @@ public class Diagnosis extends javax.swing.JFrame {
             .addGap(0, 16, Short.MAX_VALUE)
         );
 
+        ClearBtn.setBackground(new java.awt.Color(0, 0, 0));
+        ClearBtn.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        ClearBtn.setForeground(new java.awt.Color(255, 255, 255));
+        ClearBtn.setText("CLEAR");
+        ClearBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ClearBtnMouseClicked(evt);
+            }
+        });
+
+        AddBtn.setBackground(new java.awt.Color(0, 0, 0));
+        AddBtn.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        AddBtn.setForeground(new java.awt.Color(255, 255, 255));
+        AddBtn.setText("ADD");
+        AddBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                AddBtnMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(178, 178, 178)
                 .addComponent(AddBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(183, 183, 183)
+                .addGap(79, 79, 79)
+                .addComponent(DeleteBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(73, 73, 73)
+                .addComponent(ClearBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(252, 252, 252))
+                .addGap(146, 146, 146))
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
@@ -307,13 +338,19 @@ public class Diagnosis extends javax.swing.JFrame {
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGap(5, 5, 5)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(AddBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addGap(5, 5, 5)
+                        .addComponent(jButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(DeleteBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(AddBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(ClearBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
                 .addComponent(jButton13, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -424,6 +461,83 @@ public class Diagnosis extends javax.swing.JFrame {
        FetchName();
     }//GEN-LAST:event_PatIdActionPerformed
 
+    private void DeleteBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DeleteBtnMouseClicked
+        DefaultTableModel model = (DefaultTableModel)DiagnosisTable.getModel();
+        int Myindex = DiagnosisTable.getSelectedRow();
+        if (Myindex == -1) {
+            JOptionPane.showMessageDialog(this, "Select a diagnosis to delete");
+            return;
+        }
+        
+        String DiagIdToDelete = model.getValueAt(Myindex, 0).toString();
+        PreparedStatement pstmt = null;
+        
+        int confirm = JOptionPane.showConfirmDialog(this, "Are you sure you want to delete this diagnosis?", "Warning", JOptionPane.YES_NO_OPTION);
+        if (confirm == JOptionPane.YES_OPTION) {
+            try{
+                Con = DriverManager.getConnection("jdbc:derby://localhost:1527/HospitalJavaDB", "root", "3687");
+                String query = "DELETE FROM Root.DIAGNOSISTBL WHERE DIAGID=?";
+                pstmt = Con.prepareStatement(query);
+                pstmt.setString(1, DiagIdToDelete);
+                pstmt.executeUpdate();
+                JOptionPane.showMessageDialog(this, "Diagnosis deleted Successfully");
+                Selectional();
+        } catch(Exception e) {
+                e.printStackTrace();
+                JOptionPane.showMessageDialog(this, "Failed to delete diagnosis");
+        } finally {
+                try {
+                    if (pstmt != null) pstmt.close();
+                    if (Con != null) Con.close();
+                } catch(Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }//GEN-LAST:event_DeleteBtnMouseClicked
+
+    private void DiagnosisTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DiagnosisTableMouseClicked
+    DefaultTableModel model = (DefaultTableModel)DiagnosisTable.getModel();
+    int Myindex = DiagnosisTable.getSelectedRow();
+    String patname = model.getValueAt(Myindex, 2).toString();
+    String Symptoms = model.getValueAt(Myindex, 3).toString();
+    String Diagnosis = model.getValueAt(Myindex, 4).toString();
+    String medi = model.getValueAt(Myindex, 5).toString();
+    
+    String summary = PatSummary.getText() + "\n\n" +
+                     "Patient Name: " + patname + "   " +
+                     "Symptoms: " + Symptoms + "\n\n" +
+                     "Diagnosis: " + Diagnosis + "   " +
+                     "Medicines: " + medi + "\n\t\t"+
+                     "Hospital_RUPP";
+    
+    PatSummary.setText(summary);
+    }//GEN-LAST:event_DiagnosisTableMouseClicked
+
+    private void jButton12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton12MouseClicked
+        try{
+            PatSummary.print();
+        } catch(Exception e)
+        {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_jButton12MouseClicked
+
+    private void jButton13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton13MouseClicked
+        new HomeForm().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton13MouseClicked
+
+    private void ClearBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ClearBtnMouseClicked
+        DiagId.setText("");
+        PatId.setSelectedIndex(-1);
+        PatName.setText("");
+        PatSymptoms.setText("");
+        PatDiag.setText("");
+        PatMed.setText("");
+        PatSummary.setText("============PATIENT SUMMARY=============");
+    }//GEN-LAST:event_ClearBtnMouseClicked
+
     private void AddBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AddBtnMouseClicked
         if(DiagId.getText().isEmpty() || PatName.getText().isEmpty() || PatSymptoms.getText().isEmpty() || PatDiag.getText().isEmpty() || PatMed.getText().isEmpty()) {
         JOptionPane.showMessageDialog(this, "Missing Information");
@@ -459,37 +573,9 @@ public class Diagnosis extends javax.swing.JFrame {
     }
     }//GEN-LAST:event_AddBtnMouseClicked
 
-    private void DiagnosisTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DiagnosisTableMouseClicked
-    DefaultTableModel model = (DefaultTableModel)DiagnosisTable.getModel();
-    int Myindex = DiagnosisTable.getSelectedRow();
-    String patname = model.getValueAt(Myindex, 2).toString();
-    String Symptoms = model.getValueAt(Myindex, 3).toString();
-    String Diagnosis = model.getValueAt(Myindex, 4).toString();
-    String medi = model.getValueAt(Myindex, 5).toString();
-    
-    String summary = PatSummary.getText() + "\n\n" +
-                     "Patient Name: " + patname + "   " +
-                     "Symptoms: " + Symptoms + "\n\n" +
-                     "Diagnosis: " + Diagnosis + "   " +
-                     "Medicines: " + medi + "\n\t\t"+
-                     "HospitalBro";
-    
-    PatSummary.setText(summary);
-    }//GEN-LAST:event_DiagnosisTableMouseClicked
-
-    private void jButton12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton12MouseClicked
-        try{
-            PatSummary.print();
-        } catch(Exception e)
-        {
-            e.printStackTrace();
-        }
-    }//GEN-LAST:event_jButton12MouseClicked
-
-    private void jButton13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton13MouseClicked
-        new HomeForm().setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_jButton13MouseClicked
+    private void DeleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteBtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_DeleteBtnActionPerformed
 
     
     public static void main(String args[]) {
@@ -526,6 +612,8 @@ public class Diagnosis extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AddBtn;
+    private javax.swing.JButton ClearBtn;
+    private javax.swing.JButton DeleteBtn;
     private javax.swing.JTextField DiagId;
     private javax.swing.JTable DiagnosisTable;
     private javax.swing.JTextField PatDiag;
